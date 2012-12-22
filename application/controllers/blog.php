@@ -7,6 +7,7 @@ class Blog extends CI_Controller {
 
 		$data['title'] = "My Real Title";
 		$data['heading'] = "My Real Heading";
+		$data['test'] = "Im testing GitHUB!!!";
 
 		$this->load->view('blogview', $data);
 	}
