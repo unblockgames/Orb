@@ -1,7 +1,5 @@
 <html>
 	<head>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js">
-		</script>
 		<title><?php echo $title;?></title>
 	</head>
 	<body>
@@ -10,7 +8,7 @@
 			<?php
 			foreach ($result->result_array() as $row)
 			{
-				echo '$($row[\'marketGroupID\']).click(function(){$("#div1").load("browser/getNext/"$row[\'marketGroupID\']);});<'.$row['marketGroupID'].'>'.$row['marketGroupName'].'</'.$row['marketGroupID'].'><br />';
+				//this is the place where the browser items will actually by created but idk how to create them with AJAX functionality... yet
 			}
 			?>
 		</div>
