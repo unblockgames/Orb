@@ -9,6 +9,7 @@ class Blog extends CI_Controller {
 		$data['heading'] = "My Real Heading";
 
 		$this->load->view('blogview', $data);
+		$this->load->view('blogview', $data);
 	}
 
 	public function comments()
