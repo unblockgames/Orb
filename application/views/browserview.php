@@ -8,7 +8,8 @@
 			{
 				$("ul").on("click", "li", function(e)
 				{
-					alert($(this).attr("hasTypes"));
+					if ($(this).attr("q")!='null')
+				{
 					if ($(this).attr("hasTypes") == 0)
 					{
 					$("ul").load("browser/getNext/" + $(this).attr("q"));
@@ -17,13 +18,19 @@
 					{
 					$("ul").load("browser/listItems/" + $(this).attr("q"));
 					}
+				}
+				});
+				$("#div1").on("click", "#p1", function(e)
+				{
+					$("ul").load("browser/getLast/");
 				});
 			});
 		</script>
 	</head>
-	<body>
+	<body onload="CCPEVE.requestTrust('http://shoguncorp.com')">
 		<h1><?php echo $heading;?></h1>
 		<div id="div1">
+			<p id="p1">Previous</p>
 			<ul>
 				<?php
 				foreach ($result->result_array() as $row)
