@@ -13,8 +13,14 @@ class Browser extends CI_Controller {
 	}
 	public function getNext($q) //this function is called by jquery to update the database listings
 	{
+		/*
+		What does this do? $history will be reset everytime this is called; it will always be an array containing only $q.
+		It is never referenced though elsewhere. Seems superfluous. Commented it out. [JAS]
 		static $history = array();
 		array_push($history,$q); //keep track of the ids that the user is navigating through because we need them to go backward through the browser
+		
+		Tried to get ahold of you but couldn't so I figured I'd just leave a comment...
+		*/
 		$this->load->database(); // load the database class
 		$result = $this->db->query("SELECT * FROM `invmarketgroups` WHERE `parentGroupID` = '".$q."' ORDER BY `invmarketgroups`.`marketGroupName` ASC"); //query the database based on $q which is the marketgroupid
 		
