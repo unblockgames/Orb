@@ -6,9 +6,9 @@
 		<script>
 			$(document).ready(function()
 			{
-				$("li").click(function()
+				$("ul").on("click", "li", function(e)
 				{
-					$("ul").load("browser/getNext/" + $(this).attr("q"));;
+					$("ul").load("browser/getNext/" + $(this).attr("q"));
 				});
 			});
 		</script>
