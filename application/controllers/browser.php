@@ -13,14 +13,25 @@ class Browser extends CI_Controller {
 	}
 	public function getNext($q) //this function is called by jquery to update the database listings
 	{
-		static $history = array();
-		array_push($history,$q); //keep track of the ids that the user is navigating through because we need them to go backward through the browser
 		$this->load->database(); // load the database class
 		$result = $this->db->query("SELECT * FROM `invmarketgroups` WHERE `parentGroupID` = '".$q."' ORDER BY `invmarketgroups`.`marketGroupName` ASC"); //query the database based on $q which is the marketgroupid
 		
 		foreach ($result->result_array() as $row)
 			{
-				echo '<li q = "'.$row['marketGroupID'].'">'.$row['marketGroupName'].'</li>';
+				if ($row['hasTypes'] == 0)
+				echo '<li q = "'.$row['marketGroupID'].'" hasTypes = "0">'.$row['marketGroupName'].'</li>';
+				else
+				echo '<li q = "'.$row['marketGroupID'].'" hasTypes = "1">'.$row['marketGroupName'].'</li>';
+			}
+	}
+	public function listItems($q) //this function is called by jquery to update the database listings
+	{
+		$this->load->database(); // load the database class
+		$result = $this->db->query("SELECT * FROM `invtypes` WHERE `marketGroupID` = '".$q."' ORDER BY `invtypes`.`typeName` ASC"); //query the database based on $q which is the marketgroupid
+		
+		foreach ($result->result_array() as $row)
+			{
+				echo '<li q = "'.$row['marketGroupID'].'">'.$row['typeName'].'</li>';
 			}
 	}
 	public function getLast($q) //this function is called by jquery to update the database listings

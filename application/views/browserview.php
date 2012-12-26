@@ -8,7 +8,15 @@
 			{
 				$("ul").on("click", "li", function(e)
 				{
+					alert($(this).attr("hasTypes"));
+					if ($(this).attr("hasTypes") == 0)
+					{
 					$("ul").load("browser/getNext/" + $(this).attr("q"));
+					}
+					else
+					{
+					$("ul").load("browser/listItems/" + $(this).attr("q"));
+					}
 				});
 			});
 		</script>
@@ -20,7 +28,7 @@
 				<?php
 				foreach ($result->result_array() as $row)
 				{
-					echo '<li q = "'.$row['marketGroupID'].'">'.$row['marketGroupName'].'</li>';
+					echo '<li q = "'.$row['marketGroupID'].'" hasTypes = "0">'.$row['marketGroupName'].'</li>';
 				}
 				?>
 			</ul>
