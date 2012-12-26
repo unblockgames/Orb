@@ -26,6 +26,7 @@ class Browser extends CI_Controller {
 					//query that gets the next set of catagories
 			endif
 		}*/
+		echo "<li>".$q."</li>";
 	}
 	public function getLast($q) //this function is called by jquery to update the database listings
 	{
